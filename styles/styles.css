@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: black;
+  flex: auto;
+}
+
+.header {
+  height: 150px;
+  width: 100%;
+  background: linear-gradient(0deg, black, #f6931a);
+}
+
+.hero {
+  height: 100vh;
+  width: 100%;
+  background-color: white;
+}
+
+.footer {
+  height: 200px;
+  width: 100%;
+  background: linear-gradient(0deg, #f6931a, black);
+}
+
+.h-nav {
+  color: white;
+  padding-left: 50%;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  padding-left: 50px;
+  padding: 20px;
+  list-style-type: none;
+  justify-content: space-around;
+}
+
+.logo {
+  height: 100px;
+  width: 100px;
+  padding: 20px;
+  position: absolute;
+  align-items: center;
+  overflow: hidden;
+}
+
+.btc-image {
+  width: 100%;
+  height: auto;
+}
+
+.link {
+  padding-left: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 10px;
+  background-color: black;
+  border-radius: 1rem;
+}
+
+.link:hover {
+  background-color: black;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 6px 2px white;
+  cursor: pointer;
+}
+
+.navbar {
+  height: 100%;
+  width: 175px;
+  background-color: black;
+}
+
+/* Initially hide the menu items */
+
+@media screen and (min-width: 501px) {
+  .menu-toggle {
+    display: none;
+  }
+
+  .menu-items {
+    display: block;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: center;
+
+    /* Show the menu items */
+    /* Add other styles for menu items as needed */
+  }
+}
+
+/* Media query for screens less than 500px */
+@media screen and (max-width: 500px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu-items.active {
+    display: block;
+    color: #f6931a;
+    animation: slide-down 0.8s ease-in-out;
+    /* Add your animation or transition here */
+  }
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
