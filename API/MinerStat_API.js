@@ -1,5 +1,7 @@
 // API
 
+import fetch from 'node-fetch';
+
 async function API_MinerStat_Call() {
   try {
     const response = await fetch("https://api.minerstat.com/v2/coins");

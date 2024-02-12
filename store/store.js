@@ -2,11 +2,11 @@ import { API_CoinGecko_Call } from "../API/CoinGecko_API.js";
 import { API_MinerStat_Call } from "../API/MinerStat_API.js";
 import { API_BlockChainData_Call } from "../API/BlockChainData_API.js";
 
-let callCounter = 0;
-let initialCallMade = false;
+const dataArrMaxLength = 8;
 
-const priceArrMaxLength = 8;
 let priceArr = [];
+let timeArr = [];
+let callCounter = 0;
 
 async function fetchDataFromAPIs() {
   try {
@@ -35,15 +35,31 @@ function mapBTCObject(dataCoinGecko, dataMinerStat, dataBlockChain) {
     block_reward: dataMinerStat.reward_block,
     block_height: dataBlockChain.height,
     total_block_reward: dataMinerStat.reward,
+    time: timeArr, 
     API_Call_Count: callCounter,
   };
 }
 
+//Updating price array
+
 function updatePriceArray(dataCoinGecko) {
-  if (priceArr.length === priceArrMaxLength) {
+
+  if (priceArr.length === dataArrMaxLength) {
     priceArr.shift(); // Remove the oldest element
   }
   priceArr.push(dataCoinGecko.current_price);
+}
+
+//Updating time array
+
+function updateTimeArray() {
+
+  let time = getTime();
+
+  if (timeArr.length === dataArrMaxLength) {
+    timeArr.shift(); // Remove the oldest element
+  }
+  timeArr.push(time);
 }
 
 async function store() {
@@ -55,6 +71,7 @@ async function store() {
       await fetchDataFromAPIs();
 
     updatePriceArray(dataCoinGecko);
+    updateTimeArray();
 
     const BTCObject = mapBTCObject(
       dataCoinGecko,
@@ -80,5 +97,18 @@ async function store() {
 setInterval(async () => {
   await store();
 }, 100000);
+
+const getTime = () => {
+  // Create a date object.
+  let time = new Date();
+
+  let options = {hour: 'numeric', minute: 'numeric', seconds: 'numeric'};
+
+  let timeFormatter = new Intl.DateTimeFormat('en-US', options);
+  let formattedTime = timeFormatter.format(time);
+
+  return formattedTime;
+
+}
 
 export { store };

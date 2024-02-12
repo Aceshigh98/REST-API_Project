@@ -2,6 +2,8 @@
 
 //HTTP request to CoinGeckos API. Requesting data for Bitcoin Price ect..
 
+import fetch from 'node-fetch';
+
 async function API_CoinGecko_Call() {
   try {
     //This get request is only returning Bicoin data id=bitcoin no need for it to be filtered like the get request from MinerStats.com.
