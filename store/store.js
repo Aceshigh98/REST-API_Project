@@ -80,10 +80,10 @@ async function store() {
     );
 
     //Log the retrieved Bitcoin data
-    console.log(dataCoinGecko);
-    console.log(dataMinerStat);
-    console.log(dataBlockChain);
-    console.log(BTCObject);
+    //console.log(dataCoinGecko);
+    //console.log(dataMinerStat);
+    //console.log(dataBlockChain);
+    //console.log(BTCObject);
 
     return BTCObject;
   } catch (error) {
