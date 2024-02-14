@@ -1,21 +1,17 @@
 // Main server side file.
 
-import dotenv from 'dotenv';
-dotenv.config();
-
 // Import necessary modules
 import express from "express";
 import cors from "cors";
 import { store } from "./store/store.js";
 
-const apikey = process.env.API_KEY;
 
 const app = express();
 const port = 80;
 
 app.use(cors());
 
-app.get(apikey, async (req, res) => {
+app.get("/API_DATA", async (req, res) => {
   try {
     // Call the store function and wait for the result
 
