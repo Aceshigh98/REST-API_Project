@@ -35,7 +35,7 @@ function mapBTCObject(dataCoinGecko, dataMinerStat, dataBlockChain) {
     block_reward: dataMinerStat.reward_block,
     block_height: dataBlockChain.height,
     total_block_reward: dataMinerStat.reward,
-    time: timeArr, 
+    time: timeArr,
     API_Call_Count: callCounter,
   };
 }
@@ -43,7 +43,6 @@ function mapBTCObject(dataCoinGecko, dataMinerStat, dataBlockChain) {
 //Updating price array
 
 function updatePriceArray(dataCoinGecko) {
-
   if (priceArr.length === dataArrMaxLength) {
     priceArr.shift(); // Remove the oldest element
   }
@@ -53,7 +52,6 @@ function updatePriceArray(dataCoinGecko) {
 //Updating time array
 
 function updateTimeArray() {
-
   let time = getTime();
 
   if (timeArr.length === dataArrMaxLength) {
@@ -102,13 +100,12 @@ const getTime = () => {
   // Create a date object.
   let time = new Date();
 
-  let options = {hour: 'numeric', minute: 'numeric', seconds: 'numeric'};
+  let options = { hour: "numeric", minute: "numeric", second: "numeric" };
 
-  let timeFormatter = new Intl.DateTimeFormat('en-US', options);
+  let timeFormatter = new Intl.DateTimeFormat("en-US", options);
   let formattedTime = timeFormatter.format(time);
 
   return formattedTime;
-
-}
+};
 
 export { store };
