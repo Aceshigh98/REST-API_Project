@@ -96,7 +96,7 @@ async function store() {
 
 setInterval(async () => {
   await store();
-}, 100000);
+}, 300000);
 
 const getTime = () => {
   // Create a date object.
