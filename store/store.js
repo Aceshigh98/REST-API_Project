@@ -100,7 +100,12 @@ const getTime = () => {
   // Create a date object.
   let time = new Date();
 
-  let options = { hour: "numeric", minute: "numeric", second: "numeric" };
+  let options = {
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    timeZone: "America/Chicago",
+  };
 
   let timeFormatter = new Intl.DateTimeFormat("en-US", options);
   let formattedTime = timeFormatter.format(time);
