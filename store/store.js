@@ -103,7 +103,6 @@ const getTime = () => {
   let options = {
     hour: "numeric",
     minute: "numeric",
-    second: "numeric",
     timeZone: "America/Chicago",
   };
 
